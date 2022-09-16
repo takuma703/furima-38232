@@ -29,35 +29,35 @@ has_many :purchase_records
 |prefecture_id           |integer|null:false  |
 |price                   |integer|null:false  |
 |shipping_date_id        |integer|null:false  |
-|user_id                 |references|null:false ,foreign_key :true|
+|user                    |references|null:false ,foreign_key :true|
 
 ### Association
-belongs_to :users
+belongs_to :user
 has_one :purchase_record
 
 ## purchase_recordテーブル
 
 |Column                 |Type       |Options                        |
 | --------------------- | --------- | ----------------------------- |
-|user_id                |references |null:false, foreign_key :true  |
-|item_id                |references |null:false, foreign_key :true  |
+|user                   |references |null:false, foreign_key :true  |
+|item                   |references |null:false, foreign_key :true  |
 
 ### Association
-belongs_to :users
-belongs_to :items
-has_one :sending_destinations
+belongs_to :user
+belongs_to :item
+has_one :sending_destination
 
 ## sending_destinationsテーブル
 
 |Column         |Type   |Options     |
 | ------------- | ----- | ---------- |
 |post_code      |string |null:false  |
-|prefecture     |integer|null:false  |
+|prefecture_id  |integer|null:false  |
 |city           |string |null:false  |
 |house_number   |string |null:false  |
 |building_name  |string |            |
 |phone_number   |string |null:false ,unique:true  |
-|purchase_record_id |references|null:false, foreign_key :true|
+|purchase_record |references|null:false, foreign_key :true|
 
 ### Association
 belongs_to :purchase_record
