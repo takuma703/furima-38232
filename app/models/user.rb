@@ -26,5 +26,5 @@ class User < ApplicationRecord
     message: 'は全角カナで入力して下さい。'
   }
   validates :birthday, presence: true
-  validates :email, :password, :password_confirmation, presence: true
+
 end
