@@ -23,28 +23,28 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Introduction can't be blank")
     end
-    it 'カテゴリーが空だと保存できない' do
-      @item.category_id = ''
+    it 'カテゴリーが1だと保存できない' do
+      @item.category_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
-    it '商品の状態が空だと保存できない' do
-      @item.item_condition_id = ''
+    it '商品の状態が1だと保存できない' do
+      @item.item_condition_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Item condition can't be blank")
     end
-    it '配送料の負担が空だと保存できない' do
-      @item.delivery_charge_payer_id = ''
+    it '配送料の負担が1だと保存できない' do
+      @item.delivery_charge_payer_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery charge payer can't be blank")
     end
-    it '発送元の地域が空だと保存できない' do
-      @item.prefecture_id = ''
+    it '発送元の地域が1だと保存できない' do
+      @item.prefecture_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Prefecture can't be blank")
     end
-    it '発送までの日数が空だと保存できない' do
-      @item.shipping_date_id = ''
+    it '発送までの日数が1だと保存できない' do
+      @item.shipping_date_id = '1'
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping date can't be blank")
     end
