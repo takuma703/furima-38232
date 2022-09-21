@@ -49,14 +49,29 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Shipping date can't be blank")
     end
     it '価格が空だと保存できない' do
-      @item.price = ''
+      @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include('Price is invalid')
+      expect(@item.errors.full_messages).to include('Price is not a number')
     end
     it '価格が数字以外だと保存できない' do
       @item.price = '百'
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not a number')
+    end
+    it '価格が300未満だと保存できない' do
+      @item.price = '299'
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
+    end
+    it '価格が9999999以上だと保存できない' do
+      @item.price = '10000000'
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
+    end
+    it 'ユーザーが紐付いていなければ保存できない' do
+      @item.user = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('User must exist')
     end
   end
 end
