@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  #def index
-    #@items = Item.order("created_at DESC")
-  #end
+  # def index
+  # @items = Item.order("created_at DESC")
+  # end
 
   def new
     @item = Item.new
   end
-
 
   def create
     @item = Item.new(item_params)
@@ -30,6 +29,7 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :price,
       :shipping_date_id,
-      :image).merge(user_id: current_user.id)
+      :image
+    ).merge(user_id: current_user.id)
   end
 end
