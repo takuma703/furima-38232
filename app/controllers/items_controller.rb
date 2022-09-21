@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  def index
-    @items = Item.order("created_at DESC")
-  end
+  #def index
+    #@items = Item.order("created_at DESC")
+  #end
 
   def new
     @item = Item.new
@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
       :delivery_charge_payer_id,
       :prefecture_id,
       :price,
-      :shipping_date_id).merge(user_id: current_user.id)
+      :shipping_date_id,
+      :image).merge(user_id: current_user.id)
   end
 end
