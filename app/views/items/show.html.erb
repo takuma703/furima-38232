@@ -28,7 +28,7 @@
         <% if current_user.id == @item.user_id %>
           <%= link_to "商品の編集", edit_item_path(@item[:id]), method: :get, class: "item-red-btn" %>
           <p class="or-text">or</p>
-          <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
+          <%= link_to "削除", item_path(@item[:id]) , method: :delete, class:"item-destroy" %>
         <% else %>
           <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
         <% end %>
@@ -36,7 +36,7 @@
     <%# end 購入機能実装後 %>
 
     <div class="item-explain-box">
-      <span><%= @item.introduction %></span>
+      <span><%= safe_join(@item.introduction.split("\n"),tag(:br)) %></span>
     </div>
     <table class="detail-table">
       <tbody>
